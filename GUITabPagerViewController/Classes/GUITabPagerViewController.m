@@ -220,14 +220,22 @@
 #pragma mark - Public Methods
 
 - (void)selectTabbarIndex:(NSInteger)index {
-  [self selectTabbarIndex:index animation:NO];
+  [self selectTabbarIndex:index animation:NO direction:YES];
 }
 
-- (void)selectTabbarIndex:(NSInteger)index animation:(BOOL)animation {
-  [self.pageViewController setViewControllers:@[[self viewControllers][index]]
-                                    direction:UIPageViewControllerNavigationDirectionReverse
-                                     animated:animation
-                                   completion:nil];
+- (void)selectTabbarIndex:(NSInteger)index animation:(BOOL)animation direction:(BOOL)direction {
+    if (direction) {
+        [self.pageViewController setViewControllers:@[[self viewControllers][index]]
+                                          direction:UIPageViewControllerNavigationDirectionReverse
+                                           animated:animation
+                                         completion:nil];
+    } else {
+        [self.pageViewController setViewControllers:@[[self viewControllers][index]]
+                                          direction:UIPageViewControllerNavigationDirectionForward
+                                           animated:animation
+                                         completion:nil];
+    }
+  
   [[self header] animateToTabAtIndex:index animated:animation];
   [self setSelectedIndex:index];
 }

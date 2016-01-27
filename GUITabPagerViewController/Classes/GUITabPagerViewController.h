@@ -20,7 +20,7 @@
 - (NSInteger)selectedIndex;
 
 - (void)selectTabbarIndex:(NSInteger)index;
-- (void)selectTabbarIndex:(NSInteger)index animation:(BOOL)animation;
+- (void)selectTabbarIndex:(NSInteger)index animation:(BOOL)animation direction:(BOOL)direction;
 
 @end
 
